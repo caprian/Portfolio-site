@@ -1,0 +1,19 @@
+.ps-main-coontent{
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    width: 50%;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-feature-settings: "ss03", "cv02", "cv11";
+}
+
+.ps-main-content__about{
+    scroll-margin-top: 6rem;
+    margin-bottom: 9rem;
+}
+.ps-about-item{
+    margin: 0 0 1rem 0;
+    line-height: 1.625;
+    font-variation-settings: normal;
+    tab-size: 4;
+    font-weight: 600;
+}

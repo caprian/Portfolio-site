@@ -1,0 +1,10 @@
+.ps-content-wrapper{
+    max-width: 1270px;
+    background-color: transparent;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 6rem;
+    padding-right: 6rem;
+    color: #94A3B8;
+    min-height: 100vh;
+}
