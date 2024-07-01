@@ -62,11 +62,25 @@
     line-height: 1rem;
 }
 .ps-header-navitems__link:hover,
-.ps-header-navitems__link:active,
-.ps-header-navitems__link:focus {
+/* .ps-header-navitems__link:active,
+.ps-header-navitems__link:focus, */
+.ps-header-navitems__link--active {
+    display: flex;
+    color: inherit;
+    text-decoration: inherit;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    align-items: center;
+    color: #64748B;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: .75rem;
+    line-height: 1rem;
   .ps-header-navitem__icon {
     background-color: #ffffff;
     width: 4rem;
+    height: 1.5px;
   }
   .ps-header-navitem {
     color: #ffffff;

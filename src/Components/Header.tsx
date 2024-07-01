@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Header.css";
 
 export default function Header() {
+	const [isActive, setIsActive] = useState({
+		about: false,
+		experiences: false,
+		projects: false,
+	});
+
 	const handleLinkClick = (event: any) => {
 		event.preventDefault();
 		const sectionId = event.currentTarget.getAttribute("href").replace("#", "");
@@ -10,6 +16,37 @@ export default function Header() {
 			section.scrollIntoView({ behavior: "smooth" });
 		}
 	};
+
+	const getNavLinkClassName = (sectionId: keyof typeof isActive) => {
+		return isActive[sectionId]
+			? "ps-header-navitems__link--active"
+			: "ps-header-navitems__link";
+	};
+
+	useEffect(() => {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					const sectionId = entry.target.id;
+					setIsActive((prevIsActive) => ({
+						...prevIsActive,
+						[sectionId]: entry.isIntersecting && entry.intersectionRatio > 0.9,
+					}));
+				});
+			},
+			{ threshold: 0.9 }
+		);
+
+		const sections = document.querySelectorAll("section");
+		sections.forEach((section) => {
+			observer.observe(section);
+		});
+
+		return () => {
+			observer.disconnect();
+		};
+	}, [setIsActive]);
+
 	return (
 		<div className="ps-header-container">
 			<div>
@@ -21,13 +58,13 @@ export default function Header() {
 				<h2 className="ps-header-title">Full Stack Developer</h2>
 				<p className="ps-header-des">
 					I am a FullStack Developer with expertise in C#, ReactJs, TypeScript,
-					Java, Docker etc etc etc etc etc etc etc{" "}
+					Java, Docker etc etc etc etc etc etc etc
 				</p>
 				<nav className="ps-header-navitems">
 					<ul className="ps-header-navitems__container">
 						<li className="ps-header-listitem">
 							<a
-								className="ps-header-navitems__link"
+								className={getNavLinkClassName("about")}
 								href="#about"
 								onClick={handleLinkClick}>
 								<span className="ps-header-navitem__icon"></span>
@@ -36,7 +73,7 @@ export default function Header() {
 						</li>
 						<li className="ps-header-listitem">
 							<a
-								className="ps-header-navitems__link"
+								className={getNavLinkClassName("experiences")}
 								href="#experiences"
 								onClick={handleLinkClick}>
 								<span className="ps-header-navitem__icon"></span>
@@ -45,7 +82,7 @@ export default function Header() {
 						</li>
 						<li className="ps-header-listitem">
 							<a
-								className="ps-header-navitems__link"
+								className={getNavLinkClassName("projects")}
 								href="#projects"
 								onClick={handleLinkClick}>
 								<span className="ps-header-navitem__icon"></span>
